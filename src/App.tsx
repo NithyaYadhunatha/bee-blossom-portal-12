@@ -13,6 +13,18 @@ import NGOs from "./pages/NGOs";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
+// Authentication pages
+import DonorLogin from "./pages/auth/DonorLogin";
+import DonorRegister from "./pages/auth/DonorRegister";
+import VolunteerLogin from "./pages/auth/VolunteerLogin";
+import VolunteerRegister from "./pages/auth/VolunteerRegister";
+import NGOLogin from "./pages/auth/NGOLogin";
+import NGORegister from "./pages/auth/NGORegister";
+import ReceiverLogin from "./pages/auth/ReceiverLogin";
+import ReceiverRegister from "./pages/auth/ReceiverRegister";
+import AdminLogin from "./pages/auth/AdminLogin";
+import AdminRegister from "./pages/auth/AdminRegister";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,6 +40,19 @@ const App = () => (
           <Route path="/volunteers" element={<Layout><Volunteers /></Layout>} />
           <Route path="/ngos" element={<Layout><NGOs /></Layout>} />
           <Route path="/login" element={<Login />} />
+          
+          {/* Authentication Routes */}
+          <Route path="/auth/donor/login" element={<DonorLogin />} />
+          <Route path="/auth/donor/register" element={<DonorRegister />} />
+          <Route path="/auth/volunteer/login" element={<VolunteerLogin />} />
+          <Route path="/auth/volunteer/register" element={<VolunteerRegister />} />
+          <Route path="/auth/ngo/login" element={<NGOLogin />} />
+          <Route path="/auth/ngo/register" element={<NGORegister />} />
+          <Route path="/auth/receiver/login" element={<ReceiverLogin />} />
+          <Route path="/auth/receiver/register" element={<ReceiverRegister />} />
+          <Route path="/auth/admin/login" element={<AdminLogin />} />
+          <Route path="/auth/admin/register" element={<AdminRegister />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>

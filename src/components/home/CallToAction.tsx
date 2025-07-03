@@ -48,13 +48,13 @@ const CallToAction = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link 
-            to="/provider" 
+            to="/auth/donor/login" 
             className="px-8 py-4 bg-bumblebee-black text-white font-bold rounded-lg hover:bg-bumblebee-black/80 transform hover:-translate-y-1 transition-all duration-300"
           >
             Donate Food
           </Link>
           <Link 
-            to="/volunteers" 
+            to="/auth/volunteer/login" 
             className="px-8 py-4 bg-white text-bumblebee-black font-bold rounded-lg hover:bg-white/90 transform hover:-translate-y-1 transition-all duration-300"
           >
             Become a Volunteer
