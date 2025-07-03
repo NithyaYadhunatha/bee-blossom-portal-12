@@ -65,7 +65,7 @@ const Header = () => {
             </Link>
           ))}
           <Link 
-            to="/login" 
+            to="/login-selector" 
             className="btn-primary ml-4"
           >
             Login
@@ -104,7 +104,7 @@ const Header = () => {
               </Link>
             ))}
             <Link 
-              to="/login" 
+              to="/login-selector" 
               className="btn-primary mt-2 text-center"
               onClick={() => setMobileMenuOpen(false)}
             >

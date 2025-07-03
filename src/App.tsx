@@ -11,6 +11,7 @@ import Receiver from "./pages/Receiver";
 import Volunteers from "./pages/Volunteers";
 import NGOs from "./pages/NGOs";
 import Login from "./pages/Login";
+import LoginSelector from "./pages/LoginSelector";
 import NotFound from "./pages/NotFound";
 
 // Authentication pages
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/volunteers" element={<Layout><Volunteers /></Layout>} />
           <Route path="/ngos" element={<Layout><NGOs /></Layout>} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login-selector" element={<LoginSelector />} />
           
           {/* Authentication Routes */}
           <Route path="/auth/donor/login" element={<DonorLogin />} />
