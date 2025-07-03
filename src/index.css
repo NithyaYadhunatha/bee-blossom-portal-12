@@ -1,0 +1,114 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 33% 98%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 47 89% 61%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 43 69% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 48 25% 95%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 38 89% 47%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 43 30% 85%;
+    --input: 43 30% 85%;
+    --ring: 47 89% 61%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 60 33% 98%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 60 33% 98%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 60 33% 98%;
+
+    --primary: 47 89% 61%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 43 69% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 38 89% 47%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 47 89% 61%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm shadow-lg border border-white/20 rounded-xl hover:shadow-xl transition duration-300;
+  }
+
+  .honeycomb-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.1924 18.6464C5.34119 14.2799 5.34119 5.54975 11.1924 1.18322C16.9924 -3.16952 26.4 -3.16952 32.2 1.18322L70.5257 26.1419C76.3769 30.5084 76.3769 39.2386 70.5257 43.6051L32.2 68.5638C26.4 72.9165 16.9924 72.9165 11.1924 68.5638C5.34119 64.1972 5.34119 55.4671 11.1924 51.1006L38.15 34.3735L11.1924 18.6464Z' fill='%23F4C54222'/%3E%3C/svg%3E");
+    background-size: 100px 100px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-bumblebee-yellow text-bumblebee-black font-bold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-bumblebee-gold text-white font-bold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-bumblebee-yellow text-bumblebee-black font-bold rounded-lg hover:bg-bumblebee-yellow/10 transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg;
+  }
+
+  .glass-morph {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
+  }
+}
