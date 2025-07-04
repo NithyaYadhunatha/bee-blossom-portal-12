@@ -1,11 +1,9 @@
-
 import { useRef } from 'react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Building2, Users, Network, TrendingUp, Shield, Globe, HandHeart, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import NGOApplicationForm from '@/components/forms/NGOApplicationForm';
-import NGOLoginSection from '@/components/dashboard/NGOLoginSection';
 
 const NGOs = () => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -53,10 +51,6 @@ const NGOs = () => {
   const scrollToApplication = () => {
     applicationRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // Mock login state - replace with actual auth logic
-  const isLoggedIn = true;
-  const userRole = 'ngo';
 
   const benefits = [
     {
@@ -166,8 +160,8 @@ const NGOs = () => {
             backgroundPosition: 'center',
           }}
         >
-          {/* Black gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30"></div>
+          {/* Top-to-bottom gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
           {/* Additional overlays for depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bumblebee-black/70 to-bumblebee-black"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-bumblebee-black/20 via-transparent to-bumblebee-black/30 opacity-80"></div>
@@ -205,9 +199,6 @@ const NGOs = () => {
           </div>
         </div>
       </section>
-
-      {/* NGO Login Section - Only show if logged in as NGO */}
-      {isLoggedIn && userRole === 'ngo' && <NGOLoginSection />}
 
       {/* Benefits Section */}
       <section className="py-20 bg-white">
