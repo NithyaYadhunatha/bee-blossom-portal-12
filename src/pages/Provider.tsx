@@ -1,12 +1,11 @@
+
 import { useState, useRef } from 'react';
 import { Upload, MapPin, Calendar } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { Link } from 'react-router-dom';
-import DonorLoginSection from '@/components/dashboard/DonorLoginSection';
 
 const Provider = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Mock login state - would come from auth context
   const headerRef = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -49,8 +48,9 @@ const Provider = () => {
             backgroundPosition: 'center',
           }}
         >
-          {/* Dark gradient overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
+          {/* Top-to-bottom gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
+          {/* Additional overlays for depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bumblebee-black/70 to-bumblebee-black"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-bumblebee-black/20 via-transparent to-bumblebee-black/30 opacity-80"></div>
           <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-bumblebee-yellow/10 to-transparent opacity-50"></div>
@@ -87,9 +87,6 @@ const Provider = () => {
           </div>
         </div>
       </section>
-
-      {/* Donor Login Section - Only show if logged in */}
-      {isLoggedIn && <DonorLoginSection />}
       
       {/* Steps section */}
       <div className="py-16 bg-white">
