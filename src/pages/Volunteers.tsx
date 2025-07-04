@@ -1,11 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Heart, Clock, Users, Award, CheckCircle, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import VolunteerApplicationForm from '@/components/forms/VolunteerApplicationForm';
+import VolunteerLoginSection from '@/components/dashboard/VolunteerLoginSection';
 
 const Volunteers = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Mock login state - would come from auth context
   const headerRef = useRef<HTMLDivElement>(null);
   const benefitsRef = useRef<HTMLDivElement>(null);
   const rolesRef = useRef<HTMLDivElement>(null);
@@ -128,9 +130,8 @@ const Volunteers = () => {
             backgroundPosition: 'center',
           }}
         >
-          {/* Top-to-bottom gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
-          {/* Additional overlays for depth */}
+          {/* Dark gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bumblebee-black/70 to-bumblebee-black"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-bumblebee-black/20 via-transparent to-bumblebee-black/30 opacity-80"></div>
           <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-bumblebee-yellow/10 to-transparent opacity-50"></div>
@@ -167,6 +168,9 @@ const Volunteers = () => {
           </div>
         </div>
       </section>
+
+      {/* Volunteer Login Section - Only show if logged in */}
+      {isLoggedIn && <VolunteerLoginSection />}
 
       {/* Benefits Section */}
       <section className="py-20 bg-white">
