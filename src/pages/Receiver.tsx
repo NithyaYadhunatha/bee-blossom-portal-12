@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Phone, MapPin, Check, Info } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { Link } from 'react-router-dom';
+import SubscriberLoginSection from '@/components/dashboard/SubscriberLoginSection';
 
 const Receiver = () => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -29,6 +30,10 @@ const Receiver = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Mock login state - replace with actual auth logic
+  const isLoggedIn = true;
+  const userRole = 'subscriber';
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -41,8 +46,8 @@ const Receiver = () => {
             backgroundPosition: 'center',
           }}
         >
-          {/* Top-to-bottom gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
+          {/* Black gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30"></div>
           {/* Additional overlays for depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bumblebee-black/70 to-bumblebee-black"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-bumblebee-black/20 via-transparent to-bumblebee-black/30 opacity-80"></div>
@@ -80,6 +85,9 @@ const Receiver = () => {
           </div>
         </div>
       </section>
+      
+      {/* Subscriber Login Section - Only show if logged in as subscriber */}
+      {isLoggedIn && userRole === 'subscriber' && <SubscriberLoginSection />}
       
       {/* Two options section */}
       <div className="py-16 bg-bumblebee-yellow">
@@ -256,8 +264,9 @@ const Receiver = () => {
                     id="frequency"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-bumblebee-yellow"
                     required
+                    defaultValue=""
                   >
-                    <option value="" disabled selected>Select frequency</option>
+                    <option value="" disabled>Select frequency</option>
                     <option value="onetime">One-time request</option>
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>

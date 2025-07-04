@@ -7,7 +7,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // This would be connected to actual auth state
-  const [userRole, setUserRole] = useState<'donor' | 'volunteer' | null>(null); // This would come from auth context
+  const [userRole, setUserRole] = useState<'donor' | 'volunteer' | 'admin' | null>(null); // This would come from auth context
   const location = useLocation();
 
   const navLinks = [
@@ -45,6 +45,7 @@ const Header = () => {
   const getDashboardPath = () => {
     if (userRole === 'donor') return '/dashboard/donor';
     if (userRole === 'volunteer') return '/dashboard/volunteer';
+    if (userRole === 'admin') return '/admin-dashboard';
     return '/dashboard';
   };
 
@@ -89,7 +90,7 @@ const Header = () => {
               <Link 
                 to={getDashboardPath()}
                 className={`flex items-center gap-2 font-medium transition-colors hover:text-bumblebee-yellow ${
-                  location.pathname.startsWith('/dashboard') 
+                  location.pathname.startsWith('/dashboard') || location.pathname === '/admin-dashboard'
                     ? 'text-bumblebee-yellow' 
                     : 'text-white'
                 }`}
@@ -153,7 +154,7 @@ const Header = () => {
                 <Link 
                   to={getDashboardPath()}
                   className={`font-medium p-2 transition-colors hover:bg-bumblebee-black/50 rounded flex items-center gap-2 ${
-                    location.pathname.startsWith('/dashboard') 
+                    location.pathname.startsWith('/dashboard') || location.pathname === '/admin-dashboard'
                       ? 'text-bumblebee-yellow' 
                       : 'text-white'
                   }`}
