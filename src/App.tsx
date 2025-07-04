@@ -26,6 +26,10 @@ import ReceiverRegister from "./pages/auth/ReceiverRegister";
 import AdminLogin from "./pages/auth/AdminLogin";
 import AdminRegister from "./pages/auth/AdminRegister";
 
+// Dashboard pages
+import DonorDashboard from "./pages/dashboard/DonorDashboard";
+import VolunteerDashboard from "./pages/dashboard/VolunteerDashboard";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -54,6 +58,10 @@ const App = () => (
           <Route path="/auth/receiver/register" element={<ReceiverRegister />} />
           <Route path="/auth/admin/login" element={<AdminLogin />} />
           <Route path="/auth/admin/register" element={<AdminRegister />} />
+          
+          {/* Dashboard Routes */}
+          <Route path="/dashboard/donor" element={<Layout><DonorDashboard /></Layout>} />
+          <Route path="/dashboard/volunteer" element={<Layout><VolunteerDashboard /></Layout>} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />

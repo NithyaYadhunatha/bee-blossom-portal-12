@@ -1,11 +1,13 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // This would be connected to actual auth state
+  const [userRole, setUserRole] = useState<'donor' | 'volunteer' | null>(null); // This would come from auth context
   const location = useLocation();
 
   const navLinks = [
@@ -28,6 +30,23 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Mock function to simulate login/logout
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setUserRole('donor'); // This would be determined by actual login
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserRole(null);
+  };
+
+  const getDashboardPath = () => {
+    if (userRole === 'donor') return '/dashboard/donor';
+    if (userRole === 'volunteer') return '/dashboard/volunteer';
+    return '/dashboard';
+  };
 
   return (
     <header 
@@ -64,12 +83,37 @@ const Header = () => {
               {link.name}
             </Link>
           ))}
-          <Link 
-            to="/login-selector" 
-            className="btn-primary ml-4"
-          >
-            Login
-          </Link>
+          
+          {isLoggedIn ? (
+            <div className="flex items-center gap-4 ml-4">
+              <Link 
+                to={getDashboardPath()}
+                className={`flex items-center gap-2 font-medium transition-colors hover:text-bumblebee-yellow ${
+                  location.pathname.startsWith('/dashboard') 
+                    ? 'text-bumblebee-yellow' 
+                    : 'text-white'
+                }`}
+              >
+                <User size={20} />
+                Dashboard
+              </Link>
+              <button 
+                onClick={handleLogout}
+                className="flex items-center gap-2 text-white hover:text-bumblebee-yellow transition-colors"
+              >
+                <LogOut size={20} />
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link 
+              to="/login-selector" 
+              className="btn-primary ml-4"
+              onClick={handleLogin} // Remove this in production - just for demo
+            >
+              Login
+            </Link>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -103,13 +147,44 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
-            <Link 
-              to="/login-selector" 
-              className="btn-primary mt-2 text-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Login
-            </Link>
+            
+            {isLoggedIn ? (
+              <>
+                <Link 
+                  to={getDashboardPath()}
+                  className={`font-medium p-2 transition-colors hover:bg-bumblebee-black/50 rounded flex items-center gap-2 ${
+                    location.pathname.startsWith('/dashboard') 
+                      ? 'text-bumblebee-yellow' 
+                      : 'text-white'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <User size={20} />
+                  Dashboard
+                </Link>
+                <button 
+                  onClick={() => {
+                    handleLogout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-white hover:bg-bumblebee-black/50 p-2 rounded text-left flex items-center gap-2 transition-colors"
+                >
+                  <LogOut size={20} />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link 
+                to="/login-selector" 
+                className="btn-primary mt-2 text-center"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleLogin(); // Remove this in production - just for demo
+                }}
+              >
+                Login
+              </Link>
+            )}
           </nav>
         </div>
       )}
