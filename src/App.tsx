@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -29,6 +28,9 @@ import AdminRegister from "./pages/auth/AdminRegister";
 // Dashboard pages
 import DonorDashboard from "./pages/dashboard/DonorDashboard";
 import VolunteerDashboard from "./pages/dashboard/VolunteerDashboard";
+import SubscriberDashboard from "./pages/dashboard/SubscriberDashboard";
+import NGODashboard from "./pages/dashboard/NGODashboard";
+import AdminDashboard from "./pages/dashboard/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +64,9 @@ const App = () => (
           {/* Dashboard Routes */}
           <Route path="/dashboard/donor" element={<Layout><DonorDashboard /></Layout>} />
           <Route path="/dashboard/volunteer" element={<Layout><VolunteerDashboard /></Layout>} />
+          <Route path="/dashboard/requester" element={<Layout><SubscriberDashboard /></Layout>} />
+          <Route path="/dashboard/ngo" element={<Layout><NGODashboard /></Layout>} />
+          <Route path="/dashboard/admin" element={<Layout><AdminDashboard /></Layout>} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />

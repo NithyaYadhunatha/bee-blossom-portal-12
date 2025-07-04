@@ -7,7 +7,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // This would be connected to actual auth state
-  const [userRole, setUserRole] = useState<'donor' | 'volunteer' | null>(null); // This would come from auth context
+  const [userRole, setUserRole] = useState<'donor' | 'volunteer' | 'requester' | 'ngo' | 'admin' | null>(null); // This would come from auth context
   const location = useLocation();
 
   const navLinks = [
@@ -45,6 +45,9 @@ const Header = () => {
   const getDashboardPath = () => {
     if (userRole === 'donor') return '/dashboard/donor';
     if (userRole === 'volunteer') return '/dashboard/volunteer';
+    if (userRole === 'requester') return '/dashboard/requester';
+    if (userRole === 'ngo') return '/dashboard/ngo';
+    if (userRole === 'admin') return '/dashboard/admin';
     return '/dashboard';
   };
 
