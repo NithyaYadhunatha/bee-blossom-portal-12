@@ -66,19 +66,19 @@ const Hero = () => {
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
-          <Link to="/auth/donor/login" className="bg-bumblebee-yellow text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <Link to="/auth/donor/login" className="btn-primary animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Donate Food
           </Link>
-          <Link to="/auth/receiver/login" className="bg-bumblebee-yellow text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <Link to="/auth/receiver/login" className="btn-primary animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Request Food
           </Link>
-          <Link to="/auth/volunteer/login" className="bg-bumblebee-yellow text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <Link to="/auth/volunteer/login" className="btn-primary animate-fade-in" style={{ animationDelay: '0.4s' }}>
             Volunteer
           </Link>
-          <Link to="/auth/ngo/login" className="bg-bumblebee-yellow text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+          <Link to="/auth/ngo/login" className="btn-primary animate-fade-in" style={{ animationDelay: '0.5s' }}>
             NGO Register
           </Link>
-          <Link to="/auth/admin/login" className="bg-bumblebee-yellow text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <Link to="/auth/admin/login" className="btn-primary animate-fade-in" style={{ animationDelay: '0.6s' }}>
             Admin Login
           </Link>
         </div>
